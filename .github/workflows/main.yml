@@ -18,7 +18,7 @@ jobs:
       run: |        
         EVENT_JSON=$(cat $GITHUB_EVENT_PATH)         
         EVENT_JSON=$(echo "$EVENT_JSON" | jq 'del(.organization, .enterprise, .sender)')
-        PAYLOAD=$(jq -n --argjson event "$EVENT_JSON" '{"type":"ImportTestDescriptions", "github": $event}')        
+        PAYLOAD=$(jq -n --argjson event "$EVENT_JSON" '{"action":"ImportTestDescriptions", "github": $event}')        
         echo $PAYLOAD
         echo "$PAYLOAD" > payload.json
         
