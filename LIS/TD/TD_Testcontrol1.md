@@ -1,7 +1,7 @@
 # Test Description: TD_LIS_001
 ## Overview
 ### Summary
-Location URI dereferencing
+TestControl 1 Summary
 
 
 ### Description
