@@ -2,7 +2,6 @@
 ## Overview
 ### Summary
 TestControl 1 Summary
-This is the Summary
 
 
 ### Description
