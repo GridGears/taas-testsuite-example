@@ -3,6 +3,7 @@
 ### Summary
 Location URI dereferencing
 
+
 ### Description
 This test checks for LIS supplying location by reference (locationURI) at least one of following methods:
 * HELD
