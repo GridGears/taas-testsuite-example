@@ -1,0 +1,29 @@
+name: TaaS Platform Deployment
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+    paths: 
+      - '**/TD/**'
+  workflow_dispatch:
+
+jobs:
+  platform-deployment:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Prepare Notification
+    - name: Prepare Platform Interaction
+      run: |        
+        EVENT_JSON=$(cat $GITHUB_EVENT_PATH)         
+        EVENT_JSON=$(echo "$EVENT_JSON" | jq 'del(.organization, .enterprise, .sender)')
+        PAYLOAD=$(jq -n --argjson event "$EVENT_JSON" '{"type":"ImportTestDescriptions", "github": $event}')        
+        echo $PAYLOAD
+        echo "$PAYLOAD" > payload.json
+        
+    - name: Send Notification
+      run: |
+        curl -X POST https://eu-central-1.api.mcs.dev.gridgears.io/testsuites/vcs_event \
+        -H "Content-Type: application/json" \
+        -d @payload.json
