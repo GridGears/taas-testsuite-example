@@ -22,8 +22,13 @@ jobs:
         echo $PAYLOAD
         echo "$PAYLOAD" > payload.json
         
-    - name: Send Notification
+    - name: Send Notification to Dev
       run: |
         curl -X POST https://eu-central-1.api.mcs.dev.gridgears.io/testsuites/vcs_event \
+        -H "Content-Type: application/json" \
+        -d @payload.json
+    - name: Send Notification to Prod
+      run: |
+        curl -X POST https://eu-central-1.api.mcs.gridgears.io/testsuites/vcs_event \
         -H "Content-Type: application/json" \
         -d @payload.json
