@@ -1,7 +1,7 @@
 # Test Description: TD_LIS_001
 ## Overview
 ### Summary
-TestControl 1 Summary B
+TestControl 1 Summary C
 
 
 ### Description
